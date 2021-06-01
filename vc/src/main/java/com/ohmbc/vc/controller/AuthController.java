@@ -11,7 +11,6 @@ import javax.ws.rs.core.*;
 public class AuthController {
 
 	
-	
 	@GET
 	public Response authenticate(@HeaderParam("authorization") String token) {
 		return Response.ok("token="+token).build();
