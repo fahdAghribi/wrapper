@@ -34,10 +34,9 @@ public class ResponseClass {
 	}
 	
 	
-	
 	@PostMapping("/user-acces-consultation")
 	public AccesConsultation accesUser(@RequestBody AccesConsultation test) {
-		//System.out.println(professionalAcces.toString());
+		
 		RestTemplate restTemplate = new RestTemplate();
 		String url = "https://bupanp-sanitas-pre.apigee.net/oauth2/api/v2/token?grant_type=client_credentials";
 		HttpHeaders headers = new HttpHeaders();
@@ -45,11 +44,9 @@ public class ResponseClass {
 		HttpEntity<String> request = new HttpEntity<String>(headers);
 		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 		String token = response.getBody();
-		return token;
+		return null;
 	}
 	
-	
-
 	
 	@GetMapping("/responsefromserver")
 	public String ejemplo2() {
