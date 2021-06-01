@@ -22,39 +22,30 @@ public class ResponseClass {
 	
 	@PostMapping("/auth")
 	public String auth (@RequestBody ProfessionalAcces professionalAcces) {
-
 		//System.out.println(professionalAcces.toString());
 		RestTemplate restTemplate = new RestTemplate();
 		String url = "https://bupanp-sanitas-pre.apigee.net/oauth2/api/v2/token?grant_type=client_credentials";
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Basic " + "WlR1MHRBWjFldjdnRlI3ekFBVWU4N3lxbVN5TTFBd3o6RHNXbjc3WjhGU0dGaUl6bg==");
 		HttpEntity<String> request = new HttpEntity<String>(headers);
-		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
+		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 		String token = response.getBody();
 		return token;
 	}
 	
 	
-	@PostMapping("/professional-acces")
-	public ProfessionalAcces accespro(@RequestBody ProfessionalAcces professionalAcces) {
-
-		//System.out.println(professionalAcces.toString());
-		RestTemplate restTemplate = new RestTemplate();
-		String fooResourceUrl = "http://localhost:8080/responsefromserver/";
-
-		ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl, String.class);
-		return professionalAcces;
-	}
 	
 	@PostMapping("/user-acces-consultation")
 	public AccesConsultation accesUser(@RequestBody AccesConsultation test) {
-	
-		
+		//System.out.println(professionalAcces.toString());
 		RestTemplate restTemplate = new RestTemplate();
-		String fooResourceUrl = "http://localhost:8080/responsefromserver/";
-
-		ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl, String.class);
-		return test;
+		String url = "https://bupanp-sanitas-pre.apigee.net/oauth2/api/v2/token?grant_type=client_credentials";
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Basic " + "WlR1MHRBWjFldjdnRlI3ekFBVWU4N3lxbVN5TTFBd3o6RHNXbjc3WjhGU0dGaUl6bg==");
+		HttpEntity<String> request = new HttpEntity<String>(headers);
+		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+		String token = response.getBody();
+		return token;
 	}
 	
 	
